@@ -3,7 +3,7 @@ Most simple sharing of lists via links, where list items are encoded in the Hash
 
 UI is in German and beautified with Bootstrap. 
 
-Developed as part of a introductory computer science lecture at Pforzheim University.
+Developed as part of a introductory computer science lecture at Pforzheim University with Codesandbox.io online IDE, see (https://codesandbox.io/s/liste-9q5wr)[https://codesandbox.io/s/liste-9q5wr]
 
 
 # Questions, Feedback ?
