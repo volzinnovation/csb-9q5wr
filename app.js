@@ -28,7 +28,7 @@ function loadItem(itemText, isAppend = false) {
   if (isAppend) {
     let url = new URL(document.location);
     let hash = url.hash;
-    document.location.hash = hash + itemText + SEPARATOR;
+    document.location.hash = hash + encodeURI(itemText) + SEPARATOR;
   }
   listData.push(itemText);
   /* Display in HTML  */
@@ -57,6 +57,9 @@ function loadDataFromHash() {
   }
   let url = new URL(document.location);
   let hash = url.hash;
+  console.log(hash);
+  hash = decodeURI(hash);
+  console.log();
   if (hash.length > 1) {
     hash = hash.slice(1, -1); // Remove # and last ,
     for (let itemText of hash.split(SEPARATOR)) {
