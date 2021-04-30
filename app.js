@@ -24,7 +24,9 @@ function buildMailLink() {
     document.documentURI;
   return encodeURI(text);
 }
+
 function loadItem(itemText, isAppend = false) {
+  //itemText already substituted SEPARATOR is assumed
   if (isAppend) {
     let url = new URL(document.location);
     let hash = url.hash;
@@ -45,6 +47,7 @@ function loadItem(itemText, isAppend = false) {
 }
 
 function appendItem(itemText) {
+  itemText = itemText.replace(SEPARATOR, "");
   loadItem(itemText, true);
 }
 
@@ -82,7 +85,6 @@ function onLoadPage() {
 
     // get dream value and add it to the list
     let newItem = listForm.elements.eintrag.value;
-    newItem = newItem.replace(SEPARATOR, "");
     appendItem(newItem);
 
     // reset form
@@ -96,7 +98,7 @@ function remove(itemText) {
   listData.splice(position, 1);
   let newHash = "";
   for (let item in listData) {
-    newHash = newHash + listData[item] + SEPARATOR;
+    newHash = newHash + encodeURI(listData[item]) + SEPARATOR;
   }
   document.location.hash = newHash;
   loadDataFromHash();
